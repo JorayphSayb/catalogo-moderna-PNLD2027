@@ -321,6 +321,39 @@ h1, h2, h3 {
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   gap: 10px;
 }
+
+.cta-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0 6px;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--magenta);
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 14px 36px;
+  border-radius: 999px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(221, 1, 111, 0.35);
+}
+.cta-btn-disabled {
+  background: var(--border);
+  color: var(--text-secondary);
+  cursor: default;
+}
+.cta-btn-disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
 .year-btn {
   display: block;
   text-align: center;
@@ -377,3 +410,4 @@ h1, h2, h3 {
   .catalog { grid-template-columns: 1fr 1fr; gap: 14px; padding: 28px 16px 48px; }
   .modal-body { padding: 20px; }
 }
+
