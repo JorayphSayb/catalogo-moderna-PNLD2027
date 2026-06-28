@@ -125,10 +125,6 @@ function renderCatalog(filter) {
 
 // Decide o que fazer ao clicar num card, de acordo com o tipo da coleção.
 function handleCardClick(item) {
-  if (item.type === 'link-unico') {
-    window.open(item.url, '_blank', 'noopener,noreferrer');
-    return;
-  }
   openCollectionModal(item);
 }
 
@@ -194,6 +190,29 @@ function renderChoiceGrid(options, onSelect) {
   });
 }
 
+// Para coleções "link-unico": um único botão de destaque, não uma grade.
+function renderSingleCta(label, url) {
+  const optionsGrid = document.getElementById('optionsGrid');
+  optionsGrid.innerHTML = '';
+  optionsGrid.className = 'cta-wrap';
+
+  if (url) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.className = 'cta-btn';
+    a.textContent = label;
+    optionsGrid.appendChild(a);
+  } else {
+    const span = document.createElement('span');
+    span.className = 'cta-btn cta-btn-disabled';
+    span.textContent = label;
+    span.title = 'Material ainda não disponível';
+    optionsGrid.appendChild(span);
+  }
+}
+
 // Nível 1 do modal: vídeo da coleção + primeira escolha (ano ou faixa)
 function openCollectionModal(item) {
   const overlay = document.getElementById('modalOverlay');
@@ -221,6 +240,9 @@ function openCollectionModal(item) {
       item.years.map(y => ({ label: y.label, year: y })),
       (opt) => openLanguageStep(item, opt.year)
     );
+  } else if (item.type === 'link-unico') {
+    document.getElementById('modalLabel').textContent = 'Material completo';
+    renderSingleCta('Acessar obra', item.url);
   }
 
   overlay.classList.add('open');
@@ -279,3 +301,4 @@ document.getElementById('disciplineNav').addEventListener('click', (e) => {
 });
 
 renderCatalog('todas');
+
