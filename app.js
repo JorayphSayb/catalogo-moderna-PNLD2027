@@ -291,14 +291,5 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
 
-buildDisciplineNav();
-
-document.getElementById('disciplineNav').addEventListener('click', (e) => {
-  if (!e.target.classList.contains('chip')) return;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  e.target.classList.add('active');
-  renderCatalog(e.target.dataset.discipline);
-});
-
 renderCatalog('todas');
 
