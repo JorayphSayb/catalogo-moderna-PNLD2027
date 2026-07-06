@@ -292,4 +292,3 @@ document.addEventListener('keydown', (e) => {
 });
 
 renderCatalog('todas');
-
