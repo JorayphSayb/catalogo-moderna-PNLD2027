@@ -84,23 +84,13 @@ function renderCatalog(filter) {
     card.setAttribute('role', 'button');
     card.setAttribute('aria-label', 'Ver detalhes de ' + item.title);
 
-    const keys = getFilterKeysForItem(item);
-    let tagsHtml;
-    if (keys.length) {
-      tagsHtml = keys.map(key => `<span class="discipline-tag" style="color:${getColor(key)}">${nameByKey[key]}</span>`).join('');
-    } else if (item.type === 'faixa-direta') {
-      tagsHtml = `<span class="discipline-tag" style="color:${BRAND_PALETTE[2]}">Educação Digital</span>`;
-    } else {
-      tagsHtml = `<span class="discipline-tag" style="color:${BRAND_PALETTE[4]}">Regionalizado</span>`;
-    }
-
-    const colors = keys.length ? keys.map(getColor) : [item.type === 'faixa-direta' ? BRAND_PALETTE[2] : BRAND_PALETTE[4]];
-    const stripeGradient = buildStripeGradient(colors);
+    const cardTop = item.image
+      ? `<img src="${item.image}" alt="${item.title}" class="book-card-img">`
+      : `<div class="book-card-stripe" style="background:${item.color || 'var(--marrom)'}"></div>`;
 
     card.innerHTML = `
-      <div class="book-card-stripe" style="background:${stripeGradient}"></div>
+      ${cardTop}
       <div class="book-card-body">
-        <div class="tag-row">${tagsHtml}</div>
         <h3>${item.title}</h3>
         <p>${item.description}</p>
         <span class="card-cta">Ver vídeo e materiais →</span>
