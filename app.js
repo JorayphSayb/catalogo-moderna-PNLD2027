@@ -305,4 +305,30 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
 
+// Modal Plano de Aula IA
+const planoBtn = document.getElementById('planoAulaBtn');
+const planoOverlay = document.getElementById('planoOverlay');
+const planoClose = document.getElementById('planoClose');
+
+planoBtn.addEventListener('click', () => {
+  document.getElementById('planoVideo').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/4epEQzWUT4s" title="Plano de Aula IA" allowfullscreen></iframe>`;
+  planoOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+
+planoClose.addEventListener('click', () => {
+  planoOverlay.classList.remove('open');
+  document.getElementById('planoVideo').innerHTML = '';
+  document.body.style.overflow = '';
+});
+
+planoOverlay.addEventListener('click', (e) => {
+  if (e.target.id === 'planoOverlay') {
+    planoOverlay.classList.remove('open');
+    document.getElementById('planoVideo').innerHTML = '';
+    document.body.style.overflow = '';
+  }
+});
+
 renderCatalog('todas');

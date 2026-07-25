@@ -30,9 +30,9 @@
     <a class="link-chip" href="https://moderna.com.br/escola-publica/modernamigos/" target="_blank" rel="noopener noreferrer">
       <span class="link-chip-icon">🎓</span> ModernAmigos
     </a>
-    <a class="link-chip" href="https://moderna.com.br/escola-publica/pnld/" target="_blank" rel="noopener noreferrer">
-      <span class="link-chip-icon">💬</span> IA Moderna
-    </a>
+    <button class="link-chip" id="planoAulaBtn">
+      <span class="link-chip-icon">📋</span> Plano de Aula IA
+    </button>
   </div>
 </nav>
 
@@ -51,6 +51,19 @@
       <p class="modal-desc" id="modalDesc"></p>
       <p class="modal-label" id="modalLabel">Escolha a disciplina</p>
       <div class="discipline-grid" id="optionsGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal separado para o vídeo Plano de Aula IA -->
+<div class="modal-overlay" id="planoOverlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="planoClose" aria-label="Fechar">&times;</button>
+    <div class="modal-video" id="planoVideo"></div>
+    <div class="modal-body">
+      <span class="modal-discipline">Ferramenta</span>
+      <h2>Plano de Aula IA</h2>
+      <p class="modal-desc">Conheça como a Editora Moderna usa inteligência artificial para ajudar professores a criar planos de aula personalizados e alinhados à BNCC.</p>
     </div>
   </div>
 </div>
