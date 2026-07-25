@@ -140,12 +140,14 @@ function renderVideo(item) {
 }
 
 function renderOptionsGrid(options) {
-  // options: array de { label, url, color? }
   const optionsGrid = document.getElementById('optionsGrid');
   optionsGrid.innerHTML = '';
   optionsGrid.className = 'year-grid';
 
   options.forEach(opt => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'year-btn-wrap';
+
     if (opt.url) {
       const a = document.createElement('a');
       a.href = opt.url;
@@ -154,14 +156,27 @@ function renderOptionsGrid(options) {
       a.className = 'year-btn';
       if (opt.color) a.style.color = opt.color;
       a.textContent = opt.label;
-      optionsGrid.appendChild(a);
+      wrapper.appendChild(a);
     } else {
       const span = document.createElement('span');
       span.className = 'year-btn year-btn-disabled';
       span.textContent = opt.label;
       span.title = 'Material ainda não disponível';
-      optionsGrid.appendChild(span);
+      wrapper.appendChild(span);
     }
+
+    if (opt.aiUrl) {
+      const ai = document.createElement('a');
+      ai.href = opt.aiUrl;
+      ai.target = '_blank';
+      ai.rel = 'noopener noreferrer';
+      ai.className = 'ai-btn';
+      ai.title = 'Perguntar à IA sobre esta obra';
+      ai.textContent = '💬 IA';
+      wrapper.appendChild(ai);
+    }
+
+    optionsGrid.appendChild(wrapper);
   });
 }
 
@@ -181,7 +196,7 @@ function renderChoiceGrid(options, onSelect) {
 }
 
 // Para coleções "link-unico": um único botão de destaque, não uma grade.
-function renderSingleCta(label, url) {
+function renderSingleCta(label, url, aiUrl) {
   const optionsGrid = document.getElementById('optionsGrid');
   optionsGrid.innerHTML = '';
   optionsGrid.className = 'cta-wrap';
@@ -198,8 +213,17 @@ function renderSingleCta(label, url) {
     const span = document.createElement('span');
     span.className = 'cta-btn cta-btn-disabled';
     span.textContent = label;
-    span.title = 'Material ainda não disponível';
     optionsGrid.appendChild(span);
+  }
+
+  if (aiUrl) {
+    const ai = document.createElement('a');
+    ai.href = aiUrl;
+    ai.target = '_blank';
+    ai.rel = 'noopener noreferrer';
+    ai.className = 'cta-ai-btn';
+    ai.textContent = '💬 Perguntar à IA';
+    optionsGrid.appendChild(ai);
   }
 }
 
@@ -217,7 +241,7 @@ function openCollectionModal(item) {
 
   if (item.type === 'faixa-direta') {
     document.getElementById('modalLabel').textContent = 'Escolha a faixa de anos';
-    renderOptionsGrid(item.ranges.map(r => ({ label: r.label, url: r.url })));
+    renderOptionsGrid(item.ranges.map(r => ({ label: r.label, url: r.url, aiUrl: r.aiUrl })));
   } else if (item.type === 'ano-disciplina') {
     document.getElementById('modalLabel').textContent = 'Escolha o ano escolar';
     renderChoiceGrid(
@@ -232,7 +256,7 @@ function openCollectionModal(item) {
     );
   } else if (item.type === 'link-unico') {
     document.getElementById('modalLabel').textContent = 'Material completo';
-    renderSingleCta('Acessar obra', item.url);
+    renderSingleCta('Acessar obra', item.url, item.aiUrl);
   }
 
   overlay.classList.add('open');
@@ -245,7 +269,7 @@ function openDisciplineStep(item, year) {
   document.getElementById('modalDiscipline').removeAttribute('style');
   document.getElementById('modalLabel').textContent = 'Escolha a disciplina';
 
-  renderOptionsGrid(year.disciplines.map(d => ({ label: d.name, url: d.url, color: getColor(d.key) })));
+  renderOptionsGrid(year.disciplines.map(d => ({ label: d.name, url: d.url, color: getColor(d.key), aiUrl: d.aiUrl })));
 
   const backBtn = document.getElementById('backBtn');
   backBtn.textContent = '← Voltar para os anos';
@@ -259,7 +283,7 @@ function openLanguageStep(item, year) {
   document.getElementById('modalDiscipline').removeAttribute('style');
   document.getElementById('modalLabel').textContent = 'Escolha o idioma';
 
-  renderOptionsGrid(year.languages.map(l => ({ label: l.name, url: l.url, color: getColor(l.key) })));
+  renderOptionsGrid(year.languages.map(l => ({ label: l.name, url: l.url, color: getColor(l.key), aiUrl: l.aiUrl })));
 
   const backBtn = document.getElementById('backBtn');
   backBtn.textContent = '← Voltar para os anos';
