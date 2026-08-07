@@ -305,7 +305,10 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
 
-// Modal Plano de Aula IA
+
+// ==========================================
+// MODAL PLANO DE AULA IA
+// ==========================================
 const planoBtn = document.getElementById('planoAulaBtn');
 const planoOverlay = document.getElementById('planoOverlay');
 const planoClose = document.getElementById('planoClose');
@@ -331,4 +334,122 @@ planoOverlay.addEventListener('click', (e) => {
   }
 });
 
+// ==========================================
+// MODAL CÓDIGO DAS OBRAS
+// ==========================================
+const CODIGOS = {
+  "Pitanguá": {
+    "Português":         { "1º e 2º ano": "0045 P27 01 01 010 010", "3º ao 5º ano": "0056 P27 01 02 010 010" },
+    "Matemática":        { "1º e 2º ano": "0050 P27 01 01 020 020", "3º ao 5º ano": "0061 P27 01 02 020 020" },
+    "CHG":               { "1º e 2º ano": "0053 P27 01 01 037 037" },
+    "Ciências":          { "3º ao 5º ano": "0064 P27 01 02 207 207" },
+    "História":          { "3º ao 5º ano": "0066 P27 01 02 040 040" },
+    "Geografia":         { "3º ao 5º ano": "0068 P27 01 02 050 050" },
+    "Artes":             { "1º e 2º ano": "0047 P27 01 01 060 060", "3º ao 5º ano": "0058 P27 01 02 060 060" },
+    "Produção de Texto": { "3º ao 5º ano": "0075 P27 01 02 038 038" },
+  },
+  "Buriti Raízes": {
+    "Português":         { "1º e 2º ano": "0044 P27 01 01 010 010", "3º ao 5º ano": "0055 P27 01 02 010 010" },
+    "Matemática":        { "1º e 2º ano": "0049 P27 01 01 020 020", "3º ao 5º ano": "0060 P27 01 02 020 020" },
+    "CHG":               { "1º e 2º ano": "0052 P27 01 01 037 037" },
+    "Ciências":          { "3º ao 5º ano": "0063 P27 01 02 207 207" },
+    "História":          { "3º ao 5º ano": "0065 P27 01 02 040 040" },
+    "Geografia":         { "3º ao 5º ano": "0067 P27 01 02 050 050" },
+    "Artes":             { "1º e 2º ano": "0046 P27 01 01 060 060", "3º ao 5º ano": "0057 P27 01 02 060 060" },
+    "Produção de Texto": { "3º ao 5º ano": "0074 P27 01 02 038 038" },
+  },
+  "Bit-a-Bit": {
+    "Educação Digital":  { "1º e 2º ano": "0054 P27 01 01 099 099", "3º ao 5º ano": "0076 P27 01 02 099 099" },
+  },
+  "Língua Estrangeira": {
+    "Inglês":            { "1º e 2º ano": "0077 P27 01 03 090 090", "3º ao 5º ano": "0079 P27 01 03 090 090" },
+    "Espanhol":          { "1º e 2º ano": "0078 P27 01 03 098 098", "3º ao 5º ano": "0080 P27 01 03 098 098" },
+  },
+  "Moderna pelo Brasil": {
+    "Nordeste":          { "3º ao 5º ano": "0070 P27 01 02 039 039" },
+  },
+};
+
+const codigoBtn = document.getElementById('codigoObrasBtn');
+const codigoOverlay = document.getElementById('codigoOverlay');
+const codigoClose = document.getElementById('codigoClose');
+
+function renderCodigoStep1() {
+  const body = document.getElementById('codigoBody');
+  body.innerHTML = `
+    <h2 class="codigo-title">Código das Obras</h2>
+    <p class="codigo-desc">Selecione a coleção para ver o código de inscrição no MEC.</p>
+    <div class="codigo-grid">
+      ${Object.keys(CODIGOS).map(col => `
+        <button class="codigo-col-btn" onclick="renderCodigoStep2('${col.replace(/'/g, "\'")}')">${col}</button>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderCodigoStep2(colecao) {
+  const disciplinas = CODIGOS[colecao];
+  const body = document.getElementById('codigoBody');
+  body.innerHTML = `
+    <button class="codigo-back" onclick="renderCodigoStep1()">← Voltar</button>
+    <h2 class="codigo-title">${colecao}</h2>
+    <p class="codigo-desc">Selecione a disciplina:</p>
+    <div class="codigo-grid">
+      ${Object.keys(disciplinas).map(disc => `
+        <button class="codigo-col-btn" onclick="renderCodigoStep3('${colecao.replace(/'/g, "\'")}', '${disc.replace(/'/g, "\'")}')">${disc}</button>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderCodigoStep3(colecao, disciplina) {
+  const faixas = CODIGOS[colecao][disciplina];
+  const body = document.getElementById('codigoBody');
+  const faixasHtml = Object.entries(faixas).map(([faixa, codigo]) => `
+    <div class="codigo-box">
+      <div class="codigo-faixa">${faixa}</div>
+      <div class="codigo-valor" id="cod-${faixa.replace(/\s/g,'-')}">${codigo}</div>
+      <button class="codigo-copiar" onclick="copiarCodigo('${codigo}', this)">📋 Copiar código</button>
+    </div>
+  `).join('');
+
+  body.innerHTML = `
+    <button class="codigo-back" onclick="renderCodigoStep2('${colecao.replace(/'/g, "\'")}')")>← Voltar</button>
+    <h2 class="codigo-title">${colecao} — ${disciplina}</h2>
+    <p class="codigo-desc">Copie o código e use na plataforma do MEC para solicitar a obra:</p>
+    ${faixasHtml}
+  `;
+}
+
+function copiarCodigo(codigo, btn) {
+  navigator.clipboard.writeText(codigo).then(() => {
+    const original = btn.textContent;
+    btn.textContent = '✅ Copiado!';
+    btn.classList.add('copiado');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copiado');
+    }, 2000);
+  });
+}
+
+codigoBtn.addEventListener('click', () => {
+  renderCodigoStep1();
+  codigoOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+
+codigoClose.addEventListener('click', () => {
+  codigoOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+});
+
+codigoOverlay.addEventListener('click', (e) => {
+  if (e.target.id === 'codigoOverlay') {
+    codigoOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
 renderCatalog('todas');
+

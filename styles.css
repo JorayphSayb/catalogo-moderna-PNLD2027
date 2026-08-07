@@ -406,50 +406,46 @@ h1, h2, h3 {
 }
 
 
-/* Links externos (ModernAmigos, IA Moderna e outros futuros) */
+/* Links externos (ModernAmigos, Plano de Aula IA, Código das Obras) */
 .links-nav { background: var(--bg); border-bottom: 1px solid var(--border); }
 .links-nav-inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; gap: 10px; flex-wrap: wrap; }
-.link-chip { display: inline-flex; align-items: center; gap: 7px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 999px; border: 1.5px solid var(--border); background: #fff; color: var(--marrom); text-decoration: none; transition: all 0.15s ease; white-space: nowrap; }
+.link-chip { display: inline-flex; align-items: center; gap: 7px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 999px; border: 1.5px solid var(--border); background: #fff; color: var(--marrom); text-decoration: none; cursor: pointer; transition: all 0.15s ease; white-space: nowrap; }
 .link-chip:hover { border-color: var(--magenta); color: var(--magenta); }
 .link-chip-icon { font-size: 16px; }
 
 /* Imagem do card */
 .book-card-img { width: 100%; height: 180px; object-fit: cover; object-position: center top; display: block; }
 
-/* Wrapper de botão de ano/disciplina + botão IA */
+/* Wrapper botão ano/disciplina + IA */
 .year-btn-wrap { display: flex; flex-direction: column; gap: 5px; }
-.ai-btn {
-  display: block;
-  text-align: center;
-  padding: 5px 8px;
-  border-radius: 8px;
-  background: #EBF5FB;
-  color: #0094DA;
-  font-size: 11px;
-  font-weight: 600;
-  text-decoration: none;
-  border: 1px solid #BDE0F5;
-  transition: all 0.15s ease;
-}
+.ai-btn { display: block; text-align: center; padding: 5px 8px; border-radius: 8px; background: #EBF5FB; color: #0094DA; font-size: 11px; font-weight: 600; text-decoration: none; border: 1px solid #BDE0F5; transition: all 0.15s ease; }
 .ai-btn:hover { background: #0094DA; color: #fff; border-color: #0094DA; }
 
-/* Botão IA no cta-wrap (Moderna pelo Brasil) */
+/* CTA único (Moderna pelo Brasil) */
 .cta-wrap { flex-direction: column; align-items: center; gap: 12px; }
-.cta-ai-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #EBF5FB;
-  color: #0094DA;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 11px 28px;
-  border-radius: 999px;
-  border: 1.5px solid #BDE0F5;
-  transition: all 0.15s ease;
-}
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--magenta); color: #fff; text-decoration: none; font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 17px; padding: 14px 36px; border-radius: 999px; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(221, 1, 111, 0.35); }
+.cta-btn-disabled { background: var(--border); color: var(--text-secondary); cursor: default; }
+.cta-btn-disabled:hover { transform: none; box-shadow: none; }
+.cta-ai-btn { display: inline-flex; align-items: center; gap: 6px; background: #EBF5FB; color: #0094DA; text-decoration: none; font-weight: 600; font-size: 15px; padding: 11px 28px; border-radius: 999px; border: 1.5px solid #BDE0F5; transition: all 0.15s ease; }
 .cta-ai-btn:hover { background: #0094DA; color: #fff; border-color: #0094DA; }
+
+/* Modal Código das Obras */
+.codigo-modal { max-width: 520px; }
+.codigo-modal .modal-body { padding: 28px; }
+.codigo-title { font-family: 'Baloo 2', sans-serif; font-size: 22px; color: var(--marrom); margin: 0 0 6px; }
+.codigo-desc { font-size: 14px; color: var(--text-secondary); margin: 0 0 20px; line-height: 1.5; }
+.codigo-back { background: none; border: none; color: var(--text-secondary); font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; padding: 0; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 4px; }
+.codigo-back:hover { color: var(--marrom); }
+.codigo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.codigo-col-btn { font-family: 'Baloo 2', sans-serif; font-size: 15px; font-weight: 600; padding: 14px 12px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--bg); color: var(--marrom); cursor: pointer; transition: all 0.15s ease; text-align: center; }
+.codigo-col-btn:hover { border-color: var(--magenta); color: var(--magenta); background: #fff; }
+.codigo-box { background: var(--bg); border: 1.5px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; }
+.codigo-faixa { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary); margin-bottom: 6px; }
+.codigo-valor { font-family: 'Baloo 2', monospace; font-size: 20px; font-weight: 700; color: var(--marrom); letter-spacing: 0.05em; margin-bottom: 10px; }
+.codigo-copiar { display: inline-flex; align-items: center; gap: 6px; background: var(--marrom); color: #fff; border: none; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 999px; cursor: pointer; transition: all 0.15s ease; }
+.codigo-copiar:hover { background: var(--magenta); }
+.codigo-copiar.copiado { background: var(--verde); }
 
 /* Botão flutuante WhatsApp */
 .whatsapp-fab { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,0.45); transition: transform 0.2s ease, box-shadow 0.2s ease; }
