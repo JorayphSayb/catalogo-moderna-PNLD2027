@@ -44,6 +44,9 @@
     <button class="link-chip" id="codigoObrasBtn">
       <span class="link-chip-icon">🔢</span> Código das Obras
     </button>
+    <button class="link-chip" id="resenhaBtn">
+      <span class="link-chip-icon">📖</span> Resenha das Obras
+    </button>
   </div>
 </nav>
 
@@ -105,6 +108,146 @@
   </svg>
 </a>
 
+
+<!-- Modal Resenha das Obras -->
+<div class="modal-overlay" id="resenhaOverlay">
+  <div class="modal resenha-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="resenhaClose" aria-label="Fechar">&times;</button>
+    <div class="resenha-tabs">
+      <button class="resenha-tab active" data-tab="pitangua">🪶 Pitanguá</button>
+      <button class="resenha-tab" data-tab="buriti">🌿 Buriti Raízes</button>
+    </div>
+    <div class="modal-body resenha-body">
+
+      <!-- PITANGUÁ -->
+      <div class="resenha-content active" id="tab-pitangua">
+        <div class="resenha-header">
+          <h2 class="resenha-titulo">Pitanguá</h2>
+          <span class="resenha-editora">Editora Moderna</span>
+          <span class="resenha-badge">✅ Vale a Pena 🪶</span>
+        </div>
+        <div class="resenha-items">
+          <div class="resenha-item">
+            <span class="resenha-icon">📝</span>
+            <div>
+              <strong>Alfabetização Progressiva</strong>
+              <p>O conteúdo de Língua Portuguesa foca intensamente na consciência fonológica e na introdução gradual da letra cursiva.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">📄</span>
+            <div>
+              <strong>Textos Mais Curtos</strong>
+              <p>A reformulação recente trouxe textos compactos e dinâmicos para aumentar o engajamento e a fluência leitora.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">📊</span>
+            <div>
+              <strong>Avaliação Continuada</strong>
+              <p>Ferramentas e seções diagnósticas estruturadas (como "O que você já sabe" e "Hora do teste") mapeiam a evolução do aluno.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">♿</span>
+            <div>
+              <strong>Inclusão Escolar</strong>
+              <p>O material oferece recursos manipuláveis em suplementos e dicas práticas no manual para adaptar atividades a alunos laudados.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">🌍</span>
+            <div>
+              <strong>Contextualização Social</strong>
+              <p>A seção "O mundo que queremos" e os boxes "Pelo Brasil" conectam disciplinas com cidadania e realidades regionais.</p>
+            </div>
+          </div>
+          <div class="resenha-destaque">
+            <strong>O Pitanguá é excelente para escolas que buscam:</strong>
+            <ul>
+              <li>Uma rotina organizada</li>
+              <li>Foco em recomposição de aprendizagem</li>
+              <li>Segurança metodológica para o professor</li>
+            </ul>
+            <p>É um material prático, seguro para o PNLD e muito acolhedor com a diversidade escolar.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BURITI RAÍZES -->
+      <div class="resenha-content" id="tab-buriti">
+        <div class="resenha-header">
+          <h2 class="resenha-titulo">Buriti Raízes</h2>
+          <span class="resenha-editora">Editora Moderna</span>
+          <span class="resenha-sub">Reformulada para o PNLD 2027 com foco em simplificar a rotina pedagógica e fortalecer a alfabetização.</span>
+        </div>
+        <div class="resenha-secao-titulo">📚 Estrutura Pedagógica e Conteúdo</div>
+        <div class="resenha-items">
+          <div class="resenha-item">
+            <span class="resenha-icon">🗂️</span>
+            <div>
+              <strong>Estrutura Unificada</strong>
+              <p>Todos os volumes de todas as disciplinas são organizados de forma fixa em quatro unidades.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">📄</span>
+            <div>
+              <strong>Textos Mais Curtos</strong>
+              <p>Os conteúdos são contextualizados em trechos menores para favorecer a fluidez da leitura.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">🔤</span>
+            <div>
+              <strong>Alfabetização Integrada</strong>
+              <p>Ocorre de forma transversal em todas as disciplinas até o 2º ano, unindo consciência fonológica e letramento.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">✍️</span>
+            <div>
+              <strong>Transição de Fonte</strong>
+              <p>A mudança da letra bastão maiúscula para a letra de imprensa ocorre de forma gradual a partir da metade do livro do 2º ano.</p>
+            </div>
+          </div>
+        </div>
+        <div class="resenha-secao-titulo">⭐ Principais Diferenciais</div>
+        <div class="resenha-items">
+          <div class="resenha-item">
+            <span class="resenha-icon">📖</span>
+            <div>
+              <strong>Estratégias de Leitura</strong>
+              <p>Baseada nos conceitos da especialista Isabel Solé, a seção "Ler para" ensina o aluno a ter um objetivo claro antes de iniciar a leitura.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">🗺️</span>
+            <div>
+              <strong>Foco no Regionalismo</strong>
+              <p>A seção "Pelo Brasil" explora a diversidade cultural, tradições e costumes de todas as regiões, gerando forte identificação com a realidade do aluno público.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">🤝</span>
+            <div>
+              <strong>Cidadania e Atitudes</strong>
+              <p>As seções "O mundo que queremos" e "Turma da Ação" trabalham habilidades socioemocionais ligadas a temas contemporâneos da BNCC.</p>
+            </div>
+          </div>
+          <div class="resenha-item">
+            <span class="resenha-icon">📊</span>
+            <div>
+              <strong>Avaliação Contínua</strong>
+              <p>O material inclui ferramentas estruturadas para avaliações diagnósticas, processuais e de resultado focadas na preparação para o SAEB.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 <script src="catalog-data.js"></script>
 <script src="app.js"></script>
 </body>

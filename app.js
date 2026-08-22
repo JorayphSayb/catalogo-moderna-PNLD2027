@@ -451,5 +451,39 @@ codigoOverlay.addEventListener('click', (e) => {
   }
 });
 
+
+// ==========================================
+// MODAL RESENHA DAS OBRAS
+// ==========================================
+const resenhaBtn = document.getElementById('resenhaBtn');
+const resenhaOverlay = document.getElementById('resenhaOverlay');
+const resenhaClose = document.getElementById('resenhaClose');
+
+resenhaBtn.addEventListener('click', () => {
+  resenhaOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+
+resenhaClose.addEventListener('click', () => {
+  resenhaOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+});
+
+resenhaOverlay.addEventListener('click', (e) => {
+  if (e.target.id === 'resenhaOverlay') {
+    resenhaOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+document.querySelectorAll('.resenha-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.resenha-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.resenha-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
 renderCatalog('todas');
 

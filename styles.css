@@ -456,3 +456,106 @@ h1, h2, h3 {
   .catalog { grid-template-columns: 1fr 1fr; gap: 14px; padding: 28px 16px 48px; }
   .modal-body { padding: 20px; }
 }
+
+/* Modal Resenha das Obras */
+.resenha-modal { max-width: 600px; }
+.resenha-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--border);
+  background: var(--bg);
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+}
+.resenha-tab {
+  flex: 1;
+  padding: 14px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-bottom: 3px solid transparent;
+}
+.resenha-tab.active {
+  color: var(--magenta);
+  background: #fff;
+  border-bottom-color: var(--magenta);
+}
+.resenha-tab:hover:not(.active) { background: var(--border); }
+
+.resenha-body { padding: 24px 28px 30px; max-height: 65vh; overflow-y: auto; }
+.resenha-content { display: none; }
+.resenha-content.active { display: block; }
+
+.resenha-header { margin-bottom: 20px; }
+.resenha-titulo {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 26px;
+  color: var(--marrom);
+  margin: 0 0 4px;
+}
+.resenha-editora {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+.resenha-badge {
+  display: inline-block;
+  background: #F0FBE8;
+  color: #4A7A1E;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #C3E6A0;
+  margin-left: 8px;
+}
+.resenha-sub {
+  display: block;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 6px;
+}
+.resenha-secao-titulo {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin: 20px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.resenha-items { display: flex; flex-direction: column; gap: 12px; }
+.resenha-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+.resenha-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.resenha-item strong { display: block; font-size: 14px; color: var(--marrom); margin-bottom: 4px; }
+.resenha-item p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 0; }
+.resenha-destaque {
+  margin-top: 16px;
+  background: linear-gradient(135deg, #FFF8F0, #FFF3E8);
+  border: 1.5px solid #FFCB01;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.resenha-destaque strong { display: block; font-size: 14px; color: var(--marrom); margin-bottom: 8px; }
+.resenha-destaque ul { margin: 0 0 10px 18px; padding: 0; }
+.resenha-destaque ul li { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+.resenha-destaque p { font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5; }
