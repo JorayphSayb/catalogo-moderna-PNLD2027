@@ -485,5 +485,42 @@ document.querySelectorAll('.resenha-tab').forEach(tab => {
   });
 });
 
+
+// ==========================================
+// MODAL ATAS
+// ==========================================
+document.getElementById('atasBtn').addEventListener('click', () => {
+  document.getElementById('atasOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+document.getElementById('atasClose').addEventListener('click', () => {
+  document.getElementById('atasOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+});
+document.getElementById('atasOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'atasOverlay') {
+    document.getElementById('atasOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// ==========================================
+// MODAL GUIA PNLD
+// ==========================================
+document.getElementById('guiaBtn').addEventListener('click', () => {
+  document.getElementById('guiaOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+document.getElementById('guiaClose').addEventListener('click', () => {
+  document.getElementById('guiaOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+});
+document.getElementById('guiaOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'guiaOverlay') {
+    document.getElementById('guiaOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
 renderCatalog('todas');
 
